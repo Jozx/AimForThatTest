@@ -30,5 +30,10 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func sliderMove(_ sender: UISlider) {
+        print("el valor del slider es \(sender.value)")
+    }
+    
+    
 }
 
