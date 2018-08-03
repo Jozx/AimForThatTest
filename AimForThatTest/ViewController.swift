@@ -20,6 +20,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func showAlert() {
+        let alert = UIAlertController(title: "Hola Mundo", message: "Este es el juego Aim For That", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Cerrar", style: .destructive, handler: nil)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
