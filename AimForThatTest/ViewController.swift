@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        newRound()
+        reset()
         updateLabels()
     }
 
@@ -38,27 +38,42 @@ class ViewController: UIViewController {
         
         let diffence : Int = abs(self.currentValue - self.targetValue)
         
-        let points : Int = (diffence > 0) ? 100 - diffence : 1000 //ternario.. si es diferencia es mayor a 0 .. 100 - diff... sino  1000 puntos
+        var points : Int = (diffence > 0) ? 100 - diffence : 1000 //ternario.. si es diferencia es mayor a 0 .. 100 - diff... sino  1000 puntos
         
         self.score += points
         
-        let message = """
-            Has marcado \(points) puntos!!!
-        """
         
+        let title : String
         
+        switch diffence {
+        case 0:
+            title = "Puntacion perfecta!!!"
+        case 1...5 :
+            title = "Casi perfecto"
+            points = Int(Float(points) * 1.5)
+        case 6...12:
+            title = "Te ha faltado poco"
+            points = Int(Float(points)  * 1.1)
+        default:
+            title = "Estas lejos"
+        }
         
-        let alert = UIAlertController(title: "Hola Mundo", message: message, preferredStyle: .alert)
+        let message = "Has marcado \(points) puntos!!! "
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         
-        let action = UIAlertAction(title: "Cerrar", style: .destructive, handler: nil)
+        let action = UIAlertAction(title: "OK!", style: .destructive, handler: {
+            action in
+            self.newRound()
+            self.updateLabels()
+        })
         
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
         
-        newRound()
-        updateLabels()
+        
     }
     
     @IBAction func sliderMove(_ sender: UISlider) {
@@ -79,6 +94,17 @@ class ViewController: UIViewController {
         self.targetLabel.text = "\(self.targetValue)"
         self.scoreLabel.text = "\(self.score)"
         self.roundLabel.text = "\(self.round)"
+    }
+    
+    @IBAction func resetGame(_ sender: UIButton) {
+        self.reset()
+        self.updateLabels()
+    }
+    
+    func reset() {
+        self.score = 0
+        self.round = 0
+        self.newRound()
     }
 }
 
