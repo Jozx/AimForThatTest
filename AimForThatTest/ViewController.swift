@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController {
     
@@ -122,6 +123,15 @@ class ViewController: UIViewController {
     @IBAction func resetGame(_ sender: UIButton) {
         self.reset()
         self.updateLabels()
+        
+        let transition = CATransition()
+        
+        transition.type = kCATransitionFade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        
+        self.view.layer.add(transition, forKey: nil)
+        
     }
     
     func reset() {
