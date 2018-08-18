@@ -7,14 +7,35 @@
 //
 
 import UIKit
+import WebKit
 
 class AboutUsViewController: UIViewController {
 
+    @IBOutlet weak var webView: WKWebView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // metodo para llamar a una web interna dentro de la app
+        
+       /* if let url = Bundle.main.url(forResource: "index", withExtension: "html"){
+            
+            let myURL = URL(string: "\(url)")
+            
+            let myRequest = URLRequest(url: myURL!)
+            
+            webView.load(myRequest)
+            
+            
+        }*/
+        
+        //web externa
+        let myURL = URL(string: "https://www.apple.com")
+        let myRequest = URLRequest(url: myURL!)
+        webView.load(myRequest)
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
