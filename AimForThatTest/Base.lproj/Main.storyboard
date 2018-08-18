@@ -153,6 +153,12 @@
                                             <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ieT-MD-X69"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82V-bG-V77">
+                                        <rect key="frame" x="257.5" y="2" width="33.5" height="35"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                        <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -166,6 +172,8 @@
                                     <constraint firstAttribute="bottom" secondItem="MPD-24-3Iq" secondAttribute="bottom" constant="15" id="UIE-6e-IzC"/>
                                     <constraint firstItem="bGr-dK-7yP" firstAttribute="centerX" secondItem="n58-Mr-pUx" secondAttribute="centerX" id="Weq-Vu-mMZ"/>
                                     <constraint firstItem="aaJ-Lh-vJE" firstAttribute="top" secondItem="n58-Mr-pUx" secondAttribute="top" constant="75" id="XXh-oR-bPt"/>
+                                    <constraint firstItem="82V-bG-V77" firstAttribute="centerX" secondItem="n58-Mr-pUx" secondAttribute="centerX" id="Yef-7q-g2A"/>
+                                    <constraint firstItem="82V-bG-V77" firstAttribute="top" secondItem="n58-Mr-pUx" secondAttribute="top" constant="2" id="ZXI-PD-wFf"/>
                                     <constraint firstAttribute="trailing" secondItem="HB9-98-JCc" secondAttribute="trailing" constant="20" id="ZnR-sy-QhV"/>
                                     <constraint firstItem="aaJ-Lh-vJE" firstAttribute="centerX" secondItem="n58-Mr-pUx" secondAttribute="centerX" id="k0V-cw-ylu"/>
                                     <constraint firstItem="bGr-dK-7yP" firstAttribute="leading" secondItem="n58-Mr-pUx" secondAttribute="leading" constant="20" id="qP2-2I-jUB"/>
@@ -192,6 +200,7 @@
                         <outlet property="scoreLabel" destination="3WI-1s-3Qr" id="pIx-y4-xYU"/>
                         <outlet property="slider" destination="vcA-VD-vZN" id="dnt-sc-R9K"/>
                         <outlet property="targetLabel" destination="n7E-jp-Asl" id="GRJ-sn-hkx"/>
+                        <outlet property="timeLabel" destination="82V-bG-V77" id="7aF-fB-Rvk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

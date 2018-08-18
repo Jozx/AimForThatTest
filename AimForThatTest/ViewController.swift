@@ -15,11 +15,14 @@ class ViewController: UIViewController {
     var targetValue  : Int = 0
     var score        : Int = 0
     var round        : Int = 0
+    var time         : Int = 0
+    var timer        : Timer?
     
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var roundLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -27,7 +30,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         setupSlider()
-        
         reset()
         updateLabels()
     }
@@ -118,6 +120,7 @@ class ViewController: UIViewController {
         self.targetLabel.text = "\(self.targetValue)"
         self.scoreLabel.text = "\(self.score)"
         self.roundLabel.text = "\(self.round)"
+        self.timeLabel.text = "\(self.time)"
     }
     
     @IBAction func resetGame(_ sender: UIButton) {
@@ -137,7 +140,26 @@ class ViewController: UIViewController {
     func reset() {
         self.score = 0
         self.round = 0
+        self.time = 60
+        
+        if timer != nil {
+            timer?.invalidate()
+        }
+        
+       // timer = Timer(timeInterval: 1, target: self, selector: #selector(tic), userInfo: nil, repeats: true)
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tic), userInfo: nil, repeats: true)
+        
         self.newRound()
+    }
+    
+    @objc func tic() {
+        self.time -= 1
+        self.timeLabel.text = "\(self.time)"
+        
+        if self.time <= 0 {
+            self.reset()
+        }
     }
 }
 
