@@ -25,8 +25,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        setupSlider()
+        
         reset()
         updateLabels()
+    }
+    
+    func setupSlider()
+    {
+        let thumbImageNormal = UIImage(named: "SliderThumb-Normal")
+        let thumbImageHighlighted = UIImage(named: "SliderThumb-Highlighted")
+        let trackLeftImage = #imageLiteral(resourceName: "SliderTrackLeft")
+        let trakRightImage = #imageLiteral(resourceName: "SliderTrackRight")
+        
+        
+        self.slider.setThumbImage(thumbImageNormal, for: .normal)
+        self.slider.setThumbImage(thumbImageHighlighted, for: .highlighted)
+        
+        let insets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
+        
+        let trackLeftResizable = trackLeftImage.resizableImage(withCapInsets: insets)
+        let trackRightResizable = trakRightImage.resizableImage(withCapInsets: insets)
+        
+        self.slider.setMinimumTrackImage(trackLeftResizable, for: .normal)
+        self.slider.setMaximumTrackImage(trackRightResizable, for: .normal)
+        
     }
 
     override func didReceiveMemoryWarning() {
