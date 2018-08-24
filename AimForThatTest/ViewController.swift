@@ -142,13 +142,15 @@ class ViewController: UIViewController {
         self.round = 0
         self.time = 60
         
+        
         if timer != nil {
             timer?.invalidate()
         }
         
-       // timer = Timer(timeInterval: 1, target: self, selector: #selector(tic), userInfo: nil, repeats: true)
-        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tic), userInfo: nil, repeats: true)
+        
+        
+        self.updateLabels()
         
         self.newRound()
     }
